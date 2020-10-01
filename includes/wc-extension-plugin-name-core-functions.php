@@ -162,7 +162,7 @@ function detect_nps_payment_done() {
 			$order->add_order_note( "NPS payment response TRUE, Payment completed" );
 			$order->payment_complete( $_GET['npsTransactionId'] );
 			update_post_meta( $order->id, "cartId", $_GET['cartId'] );
-			$order->update_status( 'complete', "" );
+			$order->update_status( 'processing', "" );
 		} else {
 			$order->add_order_note( "NPS payment response FALSE, Payment halted/error" );
 

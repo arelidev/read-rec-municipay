@@ -180,12 +180,13 @@ class WC_nps_payment extends WC_Payment_Gateway {
 			$pID = $item->get_id();
 
 			if ( $pID ) {
+				// Add condition for production/test modes
 				$pro_id = '';
 				if ( isset( $item['_refdata'] ) ) {
 					$pro_id = explode( "_", $item['_refdata'] );
 				}
 				$array[ 'prodId_' . $incr ] = $this->get_option( 'prodid_' . $this->mode );
-				$array[ 'refNum_' . $incr ] = is_array( $pro_id ) ? get_the_title( $pro_id[0] ) : 'DEMO';
+				$array[ 'refNum_' . $incr ] = $item['name'];
 				$array[ 'amount_' . $incr ] = $item['line_total'];
 				$incr ++;
 			}
